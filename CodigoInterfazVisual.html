@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animal Interior | Naturaleza Argentina</title>
+
+<style>
+:root {
+    --forest: #234b3a;
+    --green: #3f7759;
+    --sage: #9bb69a;
+    --pale: #eaf0e5;
+    --cream: #f8f7f0;
+    --white: #ffffff;
+    --text: #263b31;
+    --muted: #718077;
+    --border: #dfe7dc;
+    --shadow: 0 12px 36px rgba(35,75,58,.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+button {
+    font: inherit;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    background: rgba(255,255,255,.88);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    background: var(--forest);
+    border-radius: 14px 14px 14px 4px;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 23px;
+    font-family: Georgia, serif;
+}
+
+.brand-name {
+    color: var(--forest);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-subtitle {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+}
+
+.header-label {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 20px 42px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 10% 20%, #e4ecdc 0, transparent 35%),
+        radial-gradient(ellipse at 90% 5%, #e3ebdf 0, transparent 32%),
+        var(--cream);
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.08;
+    letter-spacing: -1.8px;
+    color: var(--forest);
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #76946b;
+    font-style: italic;
+}
+
+.hero p {
+    max-width: 620px;
+    margin: auto;
+    color: #66776b;
+    font-size: 16px;
+}
+
+.hero-line {
+    width: 70px;
+    height: 4px;
+    background: var(--sage);
+    border-radius: 8px;
+    margin: 26px auto 0;
+}
+
+main {
+    max-width: 1120px;
+    margin: auto;
+    padding: 0 24px 60px;
+}
+
+.quiz-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+    animation: rise .7s ease both;
+}
+
+.progress-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.progress-heading strong {
+    color: var(--green);
+}
+
+.progress-track {
+    width: 100%;
+    height: 6px;
+    border-radius: 20px;
+    background: #edf0e9;
+    overflow: hidden;
+    margin-bottom: 34px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: var(--green);
+    border-radius: inherit;
+    transition: width .4s ease;
+}
+
+.questions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.question-card {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 23px 18px;
+    min-width: 0;
+    transition: border-color .25s, transform .25s;
+}
+
+.question-card:hover {
+    border-color: #afc6ad;
+    transform: translateY(-3px);
+}
+
+.question-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 9px;
+}
+
+.question-number {
+    flex: 0 0 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--forest);
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.question-card h2 {
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--forest);
+}
+
+.question-description {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 17px 46px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.option {
+    border: 1px solid #e2e8df;
+    border-radius: 10px;
+    min-height: 43px;
+    padding: 10px 8px;
+    background: #f8f9f5;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .2s, color .2s, border-color .2s,
+                transform .2s;
+}
+
+.option:hover {
+    background: var(--pale);
+    border-color: #9bb99a;
+}
+
+.option:active {
+    transform: scale(.97);
+}
+
+.option.selected {
+    color: white;
+    background: var(--forest);
+    border-color: var(--forest);
+    box-shadow: 0 4px 12px #234b3a1f;
+}
+
+.options.vertical {
+    grid-template-columns: 1fr;
+}
+
+.options.vertical .option {
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+    padding: 11px 13px;
+}
+
+.option-title {
+    display: block;
+}
+
+.option-description {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: .8;
+    margin-top: 2px;
+}
+
+.option.selected .option-description {
+    color: #e0eadf;
+}
+
+.option-check {
+    width: 17px;
+    height: 17px;
+    border: 1px solid #ccd8c9;
+    border-radius: 50%;
+    flex: 0 0 17px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+.option.selected .option-check {
+    background: white;
+    color: var(--forest);
+    border-color: white;
+}
+
+.actions {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.primary-button {
+    background: var(--forest);
+    color: white;
+    border: 1px solid var(--forest);
+    border-radius: 40px;
+    padding: 15px 30px;
+    min-width: 250px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform .2s, background .2s, box-shadow .2s;
+}
+
+.primary-button:hover {
+    background: var(--green);
+    box-shadow: 0 7px 18px #234b3a20;
+    transform: translateY(-2px);
+}
+
+.error {
+    display: none;
+    text-align: center;
+    color: #a13c35;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.result {
+    display: none;
+    margin-top: 28px;
+    animation: rise .6s ease both;
+}
+
+.result-panel {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 30px;
+    background: linear-gradient(135deg, #e8efe2, #f3f5ed);
+    border: 1px solid #dce6d6;
+    border-radius: 24px;
+    padding: 28px;
+}
+
+.result-main {
+    padding: 15px 5px;
+}
+
+.result-label {
+    display: inline-block;
+    color: var(--green);
+    background: #ffffffb5;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.species-symbol {
+    margin: 25px 0 12px;
+    width: 76px;
+    height: 76px;
+    border-radius: 22px 22px 22px 5px;
+    background: var(--forest);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    font-family: Georgia, serif;
+}
+
+.result-main h2 {
+    color: var(--forest);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.2;
+    margin-bottom: 7px;
+}
+
+.species-type {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 19px;
+}
+
+.species-intro {
+    font-size: 14px;
+    color: #627367;
+    line-height: 1.8;
+}
+
+.score-area {
+    margin-top: 25px;
+    border-top: 1px solid #cbd9c6;
+    padding-top: 20px;
+}
+
+.score-caption {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--forest);
+}
+
+.score-number {
+    color: var(--forest);
+    font-size: 27px;
+    font-weight: 800;
+    margin: 3px 0 12px;
+}
+
+.score-track-result {
+    height: 9px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #d7e1d2;
+}
+
+.score-fill {
+    height: 100%;
+    width: 0;
+    background: var(--green);
+    border-radius: inherit;
+    transition: width 1s ease;
+}
+
+.score-help {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.info-list {
+    display: grid;
+    gap: 13px;
+}
+
+.info-card {
+    display: flex;
+    gap: 15px;
+    padding: 19px;
+    background: #ffffffd9;
+    border: 1px solid #dce5d7;
+    border-radius: 16px;
+    align-items: flex-start;
+}
+
+.info-symbol {
+    flex: 0 0 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--pale);
+    color: var(--forest);
+    display: grid;
+    place-items: center;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.info-card h3 {
+    color: var(--forest);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.info-card p {
+    color: #67776b;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.fact-box {
+    padding: 17px;
+    border-radius: 15px;
+    background: #e2eadb;
+    margin-top: 13px;
+}
+
+.fact-box h3 {
+    color: var(--forest);
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.fact-box p {
+    color: #607363;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.restart-area {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.secondary-button {
+    background: transparent;
+    border: 1px solid #9aaf98;
+    color: var(--forest);
+    border-radius: 30px;
+    padding: 12px 23px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.secondary-button:hover {
+    background: var(--pale);
+    border-color: var(--green);
+}
+
+footer {
+    padding: 27px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    background: #fffdf7;
+}
+
+footer strong {
+    color: var(--forest);
+    letter-spacing: 1px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+button:focus-visible {
+    outline: 3px solid #8bad84;
+    outline-offset: 3px;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 850px) {
+    .questions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .question-card {
+        padding: 22px;
+    }
+
+    .options:not(.vertical) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .result-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .result-main {
+        padding: 5px;
+    }
+
+    .species-symbol {
+        margin-top: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        padding: 17px 5%;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .brand-subtitle {
+        font-size: 8px;
+    }
+
+    .header-label {
+        font-size: 9px;
+        text-align: right;
+    }
+
+    .hero {
+        padding: 45px 20px 35px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 0 12px 35px;
+    }
+
+    .quiz-card {
+        padding: 20px 14px;
+        border-radius: 18px;
+    }
+
+    .question-card {
+        padding: 18px 13px;
+    }
+
+    .options:not(.vertical) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .primary-button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .result-panel {
+        padding: 18px 13px;
+        gap: 20px;
+    }
+
+    .info-card {
+        padding: 14px 11px;
+        gap: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <div class="brand-mark" aria-hidden="true">N</div>
+        <div>
+            <div class="brand-name">NATURA+</div>
+            <div class="brand-subtitle">NUESTRA BIODIVERSIDAD, NUESTRO FUTURO</div>
+        </div>
+    </div>
+    <div class="header-label">CONOCÉ · VALORÁ · PROTEGÉ</div>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">Un viaje por la naturaleza argentina</div>
+    <h1>Descubrí tu<br><span>animal interior</span></h1>
+    <p>
+        Respondé tres preguntas y descubrí qué especie nativa
+        argentina te representa según tus respuestas.
+    </p>
+    <div class="hero-line"></div>
+</section>
+
+<main>
+    <section class="quiz-card" id="quizCard">
+
+        <div class="progress-heading">
+            <span><strong id="progressCount">0 de 3</strong> preguntas respondidas</span>
+            <span id="progressText">Tu cuestionario</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="quizForm">
+            <div class="questions-grid">
+
+                <section class="question-card">
+                    <div class="question-heading">
+                        <span class="question-number">01</span>
+                        <h2>¿Cuál es tu signo del zodiaco?</h2>
+                    </div>
+                    <p class="question-description">Elegí tu signo solar.</p>
+                    <div class="options" id="signos"></div>
+                </section>
+
+                <section class="question-card">
+                    <div class="question-heading">
+                        <span class="question-number">02</span>
+                        <h2>¿Con qué elemento te identificás?</h2>
+                    </div>
+                    <p class="question-description">Elegí el que más te guste.</p>
+                    <div class="options vertical" id="elementos"></div>
+                </section>
+
+                <section class="question-card">
+                    <div class="question-heading">
+                        <span class="question-number">03</span>
+                        <h2>¿Qué palabra te describe mejor?</h2>
+                    </div>
+                    <p class="question-description">No hay respuestas correctas o incorrectas.</p>
+                    <div class="options vertical" id="personalidades"></div>
+                </section>
+
+            </div>
+
+            <p class="error" id="error" role="alert">
+                Elegí una opción en cada pregunta para descubrir tu especie.
+            </p>
+
+            <div class="actions">
+                <button type="submit" class="primary-button">
+                    Descubrir mi especie →
+                </button>
+            </div>
+        </form>
+
+        <section class="result" id="result" aria-live="polite">
+            <div class="result-panel">
+
+                <div class="result-main">
+                    <span class="result-label">Tu especie nativa es</span>
+
+                    <div class="species-symbol" id="resultSymbol"
+                         aria-hidden="true">N</div>
+
+                    <h2 id="resultName">Tu especie</h2>
+                    <p class="species-type" id="resultType"></p>
+                    <p class="species-intro" id="resultIntro"></p>
+
+                    <div class="score-area">
+                        <div class="score-caption">Tu puntuación total</div>
+                        <div class="score-number" id="scoreNumber">0 puntos</div>
+                        <div class="score-track-result">
+                            <div class="score-fill" id="scoreFill"></div>
+                        </div>
+                        <p class="score-help">
+                            El resultado se calcula según tus respuestas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-list">
+                    <article class="info-card">
+                        <div class="info-symbol" aria-hidden="true">C</div>
+                        <div>
+                            <h3>Características</h3>
+                            <p id="resultCharacteristics"></p>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-symbol" aria-hidden="true">H</div>
+                        <div>
+                            <h3>Hábitat</h3>
+                            <p id="resultHabitat"></p>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-symbol" aria-hidden="true">E</div>
+                        <div>
+                            <h3>Importancia ecológica</h3>
+                            <p id="resultImportance"></p>
+                        </div>
+                    </article>
+
+                    <div class="fact-box">
+                        <h3>¿Sabías que?</h3>
+                        <p>
+                            Todas las especies nativas cumplen una función
+                            en la naturaleza. Conocerlas ayuda a comprender
+                            por qué es importante proteger sus hábitats.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="restart-area">
+                <button type="button" class="secondary-button"
+                        id="restartButton">
+                    ↻ Volver a realizar el quiz
+                </button>
+            </div>
+        </section>
+
+    </section>
+</main>
+
+<footer>
+    Una iniciativa para conocer y valorar la biodiversidad.
+    <br><br>
+    <strong>NATURA+</strong> · Quiz de especies nativas argentinas
+</footer>
+
+<script>
+const preguntas = {
+    signos: [
+        "Aries", "Tauro", "Géminis", "Cáncer",
+        "Leo", "Virgo", "Libra", "Escorpio",
+        "Sagitario", "Capricornio", "Acuario", "Piscis"
+    ],
+
+    elementos: [
+        {nombre:"Agua", descripcion:"Fluidez y adaptación"},
+        {nombre:"Fuego", descripcion:"Energía y pasión"},
+        {nombre:"Aire", descripcion:"Libertad y movimiento"},
+        {nombre:"Tierra", descripcion:"Estabilidad y naturaleza"}
+    ],
+
+    personalidades: [
+        {nombre:"Solitario", descripcion:"Disfrutás de tu espacio"},
+        {nombre:"Colaborativo", descripcion:"Te gusta trabajar en equipo"},
+        {nombre:"Introvertido", descripcion:"Sos más reservado"},
+        {nombre:"Extrovertido", descripcion:"Te gusta socializar"}
+    ]
+};
+
+const puntosSigno = {
+    sagitario:9,
+    aries:3,
+    tauro:6,
+    geminis:3,
+    cancer:9,
+    leo:6,
+    virgo:9,
+    libra:6,
+    escorpio:6,
+    capricornio:3,
+    acuario:6,
+    piscis:6
+};
+
+const puntosElemento = {
+    agua:15,
+    fuego:0,
+    aire:-6,
+    tierra:-12
+};
+
+const puntosPersonalidad = {
+    solitario:6,
+    colaborativo:-6,
+    introvertido:-12,
+    extrovertido:12
+};
+
+const especies = [
+    {
+        max:0,
+        nombre:"Yaguareté",
+        tipo:"Animal · Felino nativo",
+        simbolo:"Y",
+        caracteristicas:"Es un felino grande con manchas negras.",
+        habitat:"Selva misionera y algunas zonas del Chaco y las Yungas.",
+        importancia:"Es un depredador que ayuda a mantener el equilibrio de las poblaciones de otros animales. Está en peligro crítico en Argentina."
+    },
+    {
+        max:4,
+        nombre:"Caldén",
+        tipo:"Planta · Árbol nativo",
+        simbolo:"C",
+        caracteristicas:"Es un árbol resistente a las condiciones secas.",
+        habitat:"Principalmente el Espinal, especialmente en La Pampa y zonas cercanas.",
+        importancia:"Forma bosques nativos que ofrecen alimento y refugio a numerosas especies."
+    },
+    {
+        max:6,
+        nombre:"Aguará guazú",
+        tipo:"Animal · Cánido nativo",
+        simbolo:"A",
+        caracteristicas:"Es un cánido de patas largas, pelaje rojizo y orejas grandes.",
+        habitat:"Pastizales, sabanas y humedales del norte argentino.",
+        importancia:"Se alimenta de pequeños animales y frutos, y ayuda a dispersar semillas."
+    },
+    {
+        max:8,
+        nombre:"Guanaco",
+        tipo:"Animal · Herbívoro nativo",
+        simbolo:"G",
+        caracteristicas:"Es un mamífero herbívoro parecido a la llama, con cuello largo.",
+        habitat:"Estepas y zonas montañosas de la Patagonia y otras regiones áridas.",
+        importancia:"Influye en la vegetación al alimentarse y sirve de alimento a los depredadores."
+    },
+    {
+        max:10,
+        nombre:"Vicuña",
+        tipo:"Animal · Camélido silvestre",
+        simbolo:"V",
+        caracteristicas:"Es un camélido silvestre de cuerpo delgado y lana muy fina.",
+        habitat:"La Puna y las zonas altas de los Andes del noroeste argentino.",
+        importancia:"Es un herbívoro nativo que forma parte de las redes alimentarias de los ambientes de altura."
+    },
+    {
+        max:12,
+        nombre:"Cardenal amarillo",
+        tipo:"Animal · Ave nativa",
+        simbolo:"C",
+        caracteristicas:"Es un ave de plumaje amarillo y negro, conocida por su canto.",
+        habitat:"Bosques del Espinal y zonas arbustivas del centro y norte del país.",
+        importancia:"Se alimenta de semillas, frutos e insectos. Está amenazado por la captura ilegal y la pérdida de hábitat."
+    },
+    {
+        max:14,
+        nombre:"Cóndor andino",
+        tipo:"Animal · Ave de gran tamaño",
+        simbolo:"C",
+        caracteristicas:"Es una de las aves voladoras más grandes del mundo y tiene alas muy amplias.",
+        habitat:"La cordillera de los Andes y las zonas montañosas.",
+        importancia:"Es carroñero y ayuda a eliminar restos de animales del ambiente."
+    },
+    {
+        max:16,
+        nombre:"Venado de las pampas",
+        tipo:"Animal · Mamífero nativo",
+        simbolo:"V",
+        caracteristicas:"Es un ciervo de tamaño mediano; los machos tienen astas.",
+        habitat:"Pastizales naturales de Buenos Aires, San Luis, Santa Fe y Corrientes.",
+        importancia:"Es parte de la biodiversidad de los pastizales y contribuye al equilibrio natural. Está amenazado por la pérdida de hábitat."
+    },
+    {
+        max:18,
+        nombre:"Ceibo",
+        tipo:"Planta · Flor nacional argentina",
+        simbolo:"C",
+        caracteristicas:"Es un árbol de flores rojas intensas y es la flor nacional argentina.",
+        habitat:"Lugares húmedos, riberas de ríos y zonas inundables del litoral.",
+        importancia:"Sus flores ofrecen recursos a los polinizadores y el árbol brinda refugio a la fauna."
+    },
+    {
+        max:20,
+        nombre:"Algarrobo blanco",
+        tipo:"Planta · Árbol nativo",
+        simbolo:"A",
+        caracteristicas:"Es un árbol nativo que produce vainas comestibles.",
+        habitat:"Regiones del Chaco, el Espinal y el Monte.",
+        importancia:"Proporciona alimento y refugio a los animales, ayuda a mejorar el suelo y reduce la erosión."
+    },
+    {
+        max:22,
+        nombre:"Pehuén o araucaria",
+        tipo:"Planta · Conífera nativa",
+        simbolo:"P",
+        caracteristicas:"Es una conífera de hojas duras y semillas conocidas como piñones.",
+        habitat:"Bosques andinos de Neuquén.",
+        importancia:"Sus semillas alimentan a distintos animales y forman bosques característicos de la Patagonia."
+    },
+    {
+        max:Infinity,
+        nombre:"Carpincho",
+        tipo:"Animal · Mamífero semiacuático",
+        simbolo:"C",
+        caracteristicas:"Es el roedor más grande del mundo y vive cerca del agua.",
+        habitat:"Esteros, lagunas y ríos, especialmente en el Litoral.",
+        importancia:"Forma parte de la cadena alimentaria y contribuye a la dinámica de la vegetación."
+    }
+];
+
+const respuestas = {};
+
+function normalizar(texto) {
+    return texto.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function crearOpciones(id, lista, vertical = false) {
+    const contenedor = document.getElementById(id);
+
+    lista.forEach(item => {
+        const nombre = typeof item === "string" ? item : item.nombre;
+        const descripcion = typeof item === "string" ? "" : item.descripcion;
+
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "option";
+        boton.setAttribute("aria-pressed", "false");
+
+        const contenido = document.createElement("span");
+
+        const titulo = document.createElement("span");
+        titulo.className = "option-title";
+        titulo.textContent = nombre;
+        contenido.appendChild(titulo);
+
+        if (descripcion) {
+            const detalle = document.createElement("span");
+            detalle.className = "option-description";
+            detalle.textContent = descripcion;
+            contenido.appendChild(detalle);
+        }
+
+        const marca = document.createElement("span");
+        marca.className = "option-check";
+        marca.setAttribute("aria-hidden", "true");
+
+        boton.append(contenido, marca);
+
+        boton.addEventListener("click", () => {
+            respuestas[id] = nombre;
+
+            contenedor.querySelectorAll(".option").forEach(opcion => {
+                opcion.classList.remove("selected");
+                opcion.setAttribute("aria-pressed", "false");
+                opcion.querySelector(".option-check").textContent = "";
+            });
+
+            boton.classList.add("selected");
+            boton.setAttribute("aria-pressed", "true");
+            marca.textContent = "✓";
+
+            actualizarProgreso();
+            document.getElementById("error").style.display = "none";
+        });
+
+        contenedor.appendChild(boton);
+    });
+}
+
+crearOpciones("signos", preguntas.signos);
+crearOpciones("elementos", preguntas.elementos, true);
+crearOpciones("personalidades", preguntas.personalidades, true);
+
+function actualizarProgreso() {
+    const cantidad = Object.keys(respuestas).length;
+
+    document.getElementById("progressCount").textContent =
+        cantidad + " de 3";
+
+    document.getElementById("progressBar").style.width =
+        cantidad / 3 * 100 + "%";
+
+    document.getElementById("progressText").textContent =
+        cantidad === 3 ? "¡Listo para descubrir!" : "Tu cuestionario";
+}
+
+document.getElementById("quizForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (Object.keys(respuestas).length !== 3) {
+        document.getElementById("error").style.display = "block";
+        return;
+    }
+
+    let puntos = 0;
+
+    puntos += puntosSigno[normalizar(respuestas.signos)] ?? 0;
+    puntos += puntosElemento[normalizar(respuestas.elementos)] ?? 0;
+    puntos += puntosPersonalidad[normalizar(respuestas.personalidades)] ?? 0;
+
+    const especie = especies.find(item => puntos <= item.max);
+
+    mostrarResultado(puntos, especie);
+});
+
+function mostrarResultado(puntos, especie) {
+    document.getElementById("quizForm").hidden = true;
+
+    const resultado = document.getElementById("result");
+    resultado.style.display = "block";
+
+    document.getElementById("progressText").textContent = "Quiz completado";
+    document.getElementById("resultSymbol").textContent = especie.simbolo;
+    document.getElementById("resultName").textContent = especie.nombre;
+    document.getElementById("resultType").textContent = especie.tipo;
+    document.getElementById("resultIntro").textContent = especie.caracteristicas;
+    document.getElementById("resultCharacteristics").textContent = especie.caracteristicas;
+    document.getElementById("resultHabitat").textContent = especie.habitat;
+    document.getElementById("resultImportance").textContent = especie.importancia;
+
+    document.getElementById("scoreNumber").textContent =
+        puntos + (puntos === 1 ? " punto" : " puntos");
+
+    // Rango posible con las reglas actuales: -18 a 36 puntos.
+    const porcentaje = Math.max(0, Math.min(100, (puntos + 18) / 54 * 100));
+
+    document.getElementById("scoreFill").style.width = "0%";
+
+    requestAnimationFrame(() => {
+        document.getElementById("scoreFill").style.width = porcentaje + "%";
+    });
+
+    document.getElementById("quizCard").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+document.getElementById("restartButton").addEventListener("click", () => {
+    Object.keys(respuestas).forEach(clave => delete respuestas[clave]);
+
+    document.querySelectorAll(".option").forEach(boton => {
+        boton.classList.remove("selected");
+        boton.setAttribute("aria-pressed", "false");
+        boton.querySelector(".option-check").textContent = "";
+    });
+
+    document.getElementById("quizForm").hidden = false;
+    document.getElementById("result").style.display = "none";
+    document.getElementById("error").style.display = "none";
+    document.getElementById("scoreFill").style.width = "0%";
+
+    actualizarProgreso();
+
+    document.getElementById("quizCard").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+</script>
+
+</body>
+</html>
